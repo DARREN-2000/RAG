@@ -1,8 +1,7 @@
 """High-level RAG pipeline that wires together loading, indexing, and querying."""
 
-import os
 from pathlib import Path
-from typing import Dict, List, Optional
+from typing import Any, Dict, List
 
 from langchain.schema import Document
 
@@ -12,6 +11,7 @@ from rag.vector_store import build_vector_store, load_vector_store
 
 DEFAULT_DOCS_DIR = str(Path(__file__).parent.parent / "data" / "docs")
 DEFAULT_INDEX_PATH = str(Path(__file__).parent.parent / "faiss_index")
+MAX_EXCERPT_CHARS = 220
 
 
 class RAGPipeline:
@@ -85,5 +85,24 @@ class RAGPipeline:
                 "No index loaded. Call build_index() or load_index() first."
             )
         result = self._chain.invoke({"query": question})
-        sources = [doc.metadata for doc in result.get("source_documents", [])]
-        return {"answer": result["result"], "sources": sources}
+        source_documents = result.get("source_documents", [])
+        sources = [doc.metadata for doc in source_documents]
+        citations = self._build_citations(source_documents)
+        return {"answer": result["result"], "sources": sources, "citations": citations}
+
+    @staticmethod
+    def _build_citations(source_documents: List[Document]) -> List[Dict[str, Any]]:
+        """Build stable, UI-friendly citation entries from source documents."""
+        citations: List[Dict[str, Any]] = []
+        for idx, doc in enumerate(source_documents, start=1):
+            metadata = doc.metadata or {}
+            excerpt = " ".join(doc.page_content.split()) if doc.page_content else ""
+            citations.append(
+                {
+                    "id": idx,
+                    "source": metadata.get("source", "unknown"),
+                    "page": metadata.get("page"),
+                    "excerpt": excerpt[:MAX_EXCERPT_CHARS],
+                }
+            )
+        return citations

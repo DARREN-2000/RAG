@@ -20,8 +20,14 @@ st.set_page_config(
 st.title("🤖 ACME Customer Support Assistant")
 st.markdown(
     "Ask any question about ACME's products, billing, or technical setup. "
-    "Answers are generated from the official knowledge base."
+    "Answers are grounded in the official knowledge base with enterprise-ready citations."
 )
+
+DEMO_PROMPTS = [
+    "How do I reset my password?",
+    "What is included in the Enterprise plan?",
+    "What SLA uptime does ACME provide?",
+]
 
 # ── Sidebar ────────────────────────────────────────────────────────────────────
 with st.sidebar:
@@ -43,6 +49,11 @@ with st.sidebar:
     )
 
     k = st.slider("Documents to retrieve (k)", min_value=1, max_value=8, value=4)
+
+    st.divider()
+    st.subheader("🎬 Demo mode")
+    demo_prompt = st.selectbox("Pick a sample enterprise question", DEMO_PROMPTS, index=0)
+    run_demo = st.button("▶ Run demo question")
 
     st.divider()
 
@@ -98,7 +109,11 @@ for msg in st.session_state["messages"]:
         st.markdown(msg["content"])
 
 # ── Input ──────────────────────────────────────────────────────────────────────
-if prompt := st.chat_input("Ask a question about ACME…"):
+prompt = st.chat_input("Ask a question about ACME…")
+if run_demo:
+    prompt = demo_prompt
+
+if prompt:
     st.session_state["messages"].append({"role": "user", "content": prompt})
     with st.chat_message("user"):
         st.markdown(prompt)
@@ -109,13 +124,24 @@ if prompt := st.chat_input("Ask a question about ACME…"):
                 result = st.session_state["pipeline"].query(prompt)
                 answer = result["answer"]
                 sources = result["sources"]
+                citations = result.get("citations", [])
             except Exception as exc:
                 answer = f"❌ Error: {exc}"
                 sources = []
+                citations = []
 
         st.markdown(answer)
 
-        if sources:
+        if citations:
+            with st.expander("📚 Enterprise citations"):
+                for citation in citations:
+                    source_name = Path(citation.get("source", "unknown")).name
+                    page = citation.get("page")
+                    page_info = f" · page {page}" if page is not None else ""
+                    st.markdown(f"**[{citation['id']}]** `{source_name}`{page_info}")
+                    if citation.get("excerpt"):
+                        st.caption(citation["excerpt"])
+        elif sources:
             with st.expander("📄 Source documents"):
                 seen = set()
                 for meta in sources:

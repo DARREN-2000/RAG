@@ -152,12 +152,12 @@ def test_pipeline_load_index_raises_for_missing_path(tmp_path):
 
 
 def test_pipeline_query_returns_answer_and_sources():
-    """query() should return a dict with 'answer' and 'sources' keys."""
+    """query() should return answer, sources, and enterprise citation entries."""
     pipeline = RAGPipeline()
 
     # Inject a mock chain
     mock_chain = MagicMock()
-    source_doc = FakeDocument("some text", {"source": "faq.txt"})
+    source_doc = FakeDocument("some text from FAQ", {"source": "faq.txt", "page": 2})
     mock_chain.invoke.return_value = {
         "result": "You can reset your password from the login page.",
         "source_documents": [source_doc],
@@ -167,7 +167,10 @@ def test_pipeline_query_returns_answer_and_sources():
     result = pipeline.query("How do I reset my password?")
 
     assert result["answer"] == "You can reset your password from the login page."
-    assert result["sources"] == [{"source": "faq.txt"}]
+    assert result["sources"] == [{"source": "faq.txt", "page": 2}]
+    assert result["citations"] == [
+        {"id": 1, "source": "faq.txt", "page": 2, "excerpt": "some text from FAQ"}
+    ]
     mock_chain.invoke.assert_called_once_with({"query": "How do I reset my password?"})
 
 
@@ -193,6 +196,15 @@ def test_pipeline_build_index_wires_components(tmp_path):
     mock_vs.assert_called_once_with([fake_chunk], persist_path=str(tmp_path / "idx"))
     mock_chain.assert_called_once()
     assert pipeline._chain is fake_chain
+
+
+def test_pipeline_citations_fall_back_to_unknown_source():
+    """Citation builder should handle missing metadata without crashing."""
+    citations = RAGPipeline._build_citations([FakeDocument("x" * 400, {})])
+    assert citations[0]["id"] == 1
+    assert citations[0]["source"] == "unknown"
+    assert citations[0]["page"] is None
+    assert len(citations[0]["excerpt"]) == 220
 
 
 def test_sample_docs_exist():

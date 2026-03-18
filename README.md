@@ -95,6 +95,12 @@ Open http://localhost:8501 in your browser.
 
 ![screenshot placeholder](https://placehold.co/800x450?text=ACME+Support+Assistant+UI)
 
+### Built-in demo flow
+
+Use **🎬 Demo mode** in the sidebar to run sample enterprise support questions in one click.
+Each answer includes a **📚 Enterprise citations** section with numbered sources, optional page
+metadata, and supporting excerpts.
+
 ### 5 — Use the Python API directly
 
 ```python
