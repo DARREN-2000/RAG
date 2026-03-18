@@ -1,0 +1,49 @@
+ACME SaaS Platform — Technical Support Guide
+=============================================
+
+Password & Authentication
+--------------------------
+Q: How do I reset my password?
+A: On the login page click "Forgot Password". Enter your email address and click "Send Reset Link". Check your inbox (and spam folder) for a reset email. The link expires in 1 hour. If you do not receive the email, contact support@acme.example.com.
+
+Q: I have two-factor authentication (2FA) enabled but lost my device. What do I do?
+A: Use one of the 10 single-use backup codes that were shown when you first enabled 2FA. Each code can only be used once. If you have lost all your backup codes, contact support@acme.example.com with a government-issued ID for identity verification.
+
+Q: Can I change my login email address?
+A: Yes. Go to Profile → Account Settings → Email Address. Enter your new email and click "Save". A verification link will be sent to the new address. The change takes effect after you verify the new address.
+
+Account & Billing
+-----------------
+Q: Why was my card declined?
+A: Common reasons include an expired card, incorrect billing address, or insufficient funds. Update your payment details at Settings → Billing → Payment Methods. If the issue persists, contact your bank or reach out to billing@acme.example.com.
+
+Q: How do I download my invoices?
+A: Go to Settings → Billing → Invoice History. Click the PDF icon next to any invoice to download it.
+
+Q: How do I add or remove a user from my workspace?
+A: Workspace Admins can manage users at Settings → Team. Click "Remove" next to a user to revoke their access. The seat will be freed immediately; billing adjustment takes effect at the next renewal date.
+
+Performance & Uptime
+--------------------
+Q: Where can I check the platform status?
+A: Visit https://status.acme.example.com to see real-time uptime and any ongoing incidents. You can subscribe to status updates via email or RSS feed.
+
+Q: What are ACME's uptime SLAs?
+A: The Starter plan has a 99.5% monthly uptime SLA. The Pro plan has 99.9%, and the Enterprise plan has 99.99% with a dedicated support SLA.
+
+Q: What regions are available for data residency?
+A: Currently ACME offers data residency in the United States (us-east-1, us-west-2), European Union (eu-west-1), and Asia-Pacific (ap-southeast-1). Enterprise customers can request a dedicated region.
+
+Data & Security
+---------------
+Q: Is my data encrypted?
+A: Yes. All data is encrypted at rest using AES-256 and in transit using TLS 1.2+. Encryption keys are managed by AWS KMS.
+
+Q: How do I export my data?
+A: Go to Settings → Data & Privacy → Export Data. Choose the scope (entire workspace or individual projects) and click "Request Export". You will receive a download link by email within 24 hours.
+
+Q: Does ACME comply with GDPR?
+A: Yes. ACME is fully GDPR-compliant. You can review our Data Processing Agreement (DPA) at https://acme.example.com/legal/dpa. Enterprise customers can sign a custom DPA on request.
+
+Q: Does ACME have SOC 2 certification?
+A: Yes. ACME maintains a SOC 2 Type II certification. The audit report is available to Enterprise customers under NDA upon request.

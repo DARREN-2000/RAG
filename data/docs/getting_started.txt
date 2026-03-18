@@ -1,0 +1,65 @@
+ACME SaaS Platform — Getting Started Guide
+==========================================
+
+Step 1 — Sign Up and Verify Your Account
+-----------------------------------------
+1. Go to https://acme.example.com/signup.
+2. Enter your full name, work email, and a strong password (minimum 8 characters, at least one uppercase letter and one number).
+3. Click "Create Account".
+4. Open the verification email and click "Confirm Email Address". You are now logged in.
+
+Step 2 — Set Up Your Workspace
+-------------------------------
+When you first log in you will be prompted to create or join a workspace.
+- To create a new workspace: Enter a workspace name (e.g., "Acme Corp") and choose your industry. Click "Create Workspace".
+- To join an existing workspace: Ask your workspace Admin to send you an invitation link.
+
+Step 3 — Create Your First Project
+------------------------------------
+1. Click "+ New Project" in the left sidebar.
+2. Enter a project name and optional description.
+3. Choose a project template (Kanban, Scrum, or Blank) or start from scratch.
+4. Click "Create Project".
+
+Step 4 — Invite Your Team
+--------------------------
+1. In the left sidebar, click the workspace name and choose "Invite People".
+2. Enter team members' email addresses (one per line or comma-separated).
+3. Assign a role: Admin, Member, or Guest.
+4. Click "Send Invitations".
+
+Step 5 — Create and Assign Tasks
+----------------------------------
+1. Inside a project, click "+ Add Task".
+2. Enter a task title, description, due date, and priority.
+3. Assign the task to one or more team members.
+4. Attach relevant files by dragging and dropping or clicking "Attach File".
+5. Click "Save Task".
+
+Step 6 — Use the Dashboard
+----------------------------
+The dashboard gives you an overview of:
+- Tasks due today and this week.
+- Activity feed across all projects.
+- Team workload chart.
+- Recently updated files.
+
+Navigate to the Dashboard by clicking the grid icon (⊞) at the top of the left sidebar.
+
+Step 7 — Enable Notifications
+-------------------------------
+Go to Profile → Notifications to choose how you receive alerts:
+- Email notifications for task assignments, comments, and due-date reminders.
+- In-app notifications for real-time updates.
+- Slack or Microsoft Teams notifications if you have those integrations configured.
+
+Step 8 — Mobile App
+--------------------
+Download the ACME mobile app from the Apple App Store or Google Play Store. Sign in with the same email and password you use on the web. All your projects, tasks, and files are synced automatically.
+
+Getting Help
+------------
+- In-app help: Click the "?" icon in the lower-right corner for contextual help articles.
+- Support email: support@acme.example.com (response within 24 hours for Starter, 4 hours for Pro).
+- Live chat: Available in-app for Pro and Enterprise users during business hours (Monday–Friday, 9 AM – 6 PM EST).
+- Community forum: https://community.acme.example.com

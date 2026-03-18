@@ -1,0 +1,35 @@
+ACME SaaS Platform — Product FAQ
+==================================
+
+1. What is ACME SaaS Platform?
+ACME SaaS Platform is a cloud-based project management and team collaboration tool designed for small and medium-sized businesses. It provides task tracking, file sharing, time logging, and real-time messaging in a single workspace.
+
+2. How do I create an account?
+Visit https://acme.example.com/signup. Enter your work email address, choose a password, and click "Create Account". You will receive a verification email within a few minutes. Click the link in that email to activate your account.
+
+3. What pricing plans are available?
+- Free Plan: Up to 5 users, 2 projects, 1 GB storage.
+- Starter Plan ($12/user/month): Unlimited projects, 10 GB storage, email support.
+- Pro Plan ($29/user/month): Everything in Starter plus priority support, advanced analytics, and 100 GB storage.
+- Enterprise Plan: Custom pricing. Contact sales@acme.example.com for a quote.
+
+4. How do I upgrade or downgrade my plan?
+Go to Settings → Billing → Change Plan. Select the desired plan and confirm. Changes take effect immediately; billing is prorated for the current period.
+
+5. Can I cancel my subscription at any time?
+Yes. You can cancel from Settings → Billing → Cancel Subscription. Your access continues until the end of the current billing period. We do not offer refunds for partial months.
+
+6. Is there a free trial?
+Yes. Every new account starts with a 14-day free trial of the Pro Plan. No credit card is required to start the trial.
+
+7. What file types are supported for upload?
+You can upload any file type (PDF, DOCX, PNG, MP4, ZIP, etc.). Individual file size is limited to 100 MB on Starter and 500 MB on Pro and Enterprise plans.
+
+8. Does ACME support single sign-on (SSO)?
+SSO via SAML 2.0 is available on the Enterprise plan. Contact our support team to configure SSO for your organization.
+
+9. What integrations are available?
+ACME integrates with Slack, Microsoft Teams, Google Drive, Dropbox, GitHub, Jira, and Zapier. Additional integrations can be built using our REST API.
+
+10. How do I invite team members?
+Navigate to Settings → Team → Invite Members. Enter the email addresses of your team members and click "Send Invitations". Invitees will receive an email with a link to join your workspace.
