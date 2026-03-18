@@ -11,6 +11,7 @@ from rag.vector_store import build_vector_store, load_vector_store
 
 DEFAULT_DOCS_DIR = str(Path(__file__).parent.parent / "data" / "docs")
 DEFAULT_INDEX_PATH = str(Path(__file__).parent.parent / "faiss_index")
+MAX_EXCERPT_CHARS = 220
 
 
 class RAGPipeline:
@@ -101,7 +102,7 @@ class RAGPipeline:
                     "id": idx,
                     "source": metadata.get("source", "unknown"),
                     "page": metadata.get("page"),
-                    "excerpt": excerpt[:220],
+                    "excerpt": excerpt[:MAX_EXCERPT_CHARS],
                 }
             )
         return citations

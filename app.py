@@ -109,8 +109,9 @@ for msg in st.session_state["messages"]:
         st.markdown(msg["content"])
 
 # ── Input ──────────────────────────────────────────────────────────────────────
-typed_prompt = st.chat_input("Ask a question about ACME…")
-prompt = demo_prompt if run_demo else typed_prompt
+prompt = st.chat_input("Ask a question about ACME…")
+if run_demo:
+    prompt = demo_prompt
 
 if prompt:
     st.session_state["messages"].append({"role": "user", "content": prompt})
